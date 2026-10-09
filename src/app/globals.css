@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #080808;
+  --color-surface: #141414;
+  --color-raised: #1c1c1c;
+  --color-blood: #e32636;
+  --color-blood-dark: #9b1020;
+  --color-mute: #a0a0a0;
+  --color-line: rgb(255 255 255 / 0.1);
+
+  --font-display: var(--font-anton), "Bebas Neue", Impact, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
+html {
+  background: #080808;
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #080808;
+  color: #fff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #e32636;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #e32636;
+  outline-offset: 3px;
+}
+
+/* Grano discreto sobre toda la página */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.font-display {
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Los controles nativos de formulario respetan el tema oscuro */
+select,
+input {
+  color-scheme: dark;
+}
